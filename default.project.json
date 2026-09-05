@@ -1,0 +1,24 @@
+{
+  "name": "Physical_Folding_Doors",
+  "tree": {
+    "$className": "DataModel",
+    "Workspace": {
+      "Elevator": {
+        "$className": "Model",
+        "Controller": {
+          "$className": "Script",
+          "Plugins": {
+            "$className": "Folder",
+            "Physical_Folding_Doors": {
+              "$path": "src",
+              "Dependencies": {
+                "$className": "Folder",
+                "$path": "Packages"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

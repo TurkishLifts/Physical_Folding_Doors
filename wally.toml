@@ -1,0 +1,9 @@
+[package]
+name = "turkishlifts/physicalfoldingdoors"
+version = "0.1.0"
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+
+[dependencies]
+sift = "csqrl/sift@0.0.11"
+freeze = "duckarmor/freeze@0.1.4"
