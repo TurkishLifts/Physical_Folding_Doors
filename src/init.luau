@@ -1,7 +1,7 @@
 --[[
     Physical_Folding_Doors by TurkishLifts
 
-        VERSION: v1.0.1,  DATE: 5/09/2026
+        VERSION: v1.0.2,  DATE: 5/09/2026
 ]]--
 
 --!nocheck
@@ -141,7 +141,7 @@ function module.init(controller : {})
         if not FoldingDoor and Side ~= "all" then warn(`Folding Door not found for side: {Side}!`); return end
 
         if Side == "all" then
-            for _,Door in ipairs(FoldingDoorsContainer) do
+            for _,Door in pairs(FoldingDoorsContainer) do
                 HandleDoor(Door, protocol, params)
             end
         else
