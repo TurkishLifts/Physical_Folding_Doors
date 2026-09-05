@@ -1,7 +1,7 @@
 --[[
     Physical_Folding_Doors by TurkishLifts
 
-        VERSION: v1.0,  DATE: 5/09/2026
+        VERSION: v1.0.1,  DATE: 5/09/2026
 ]]--
 
 --!nocheck
@@ -113,6 +113,8 @@ function module.init(controller : {})
                         sides = 'all', 
                         request = 'open' 
                     })
+                else
+                    WeldEm(FoldingDoor.DoorModel,true)
                 end
             end)
         elseif protocol == "on_door_open" then
