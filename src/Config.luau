@@ -10,10 +10,10 @@ return {
     ToleranceDelay = 0.5,
 
     CustomSideConfig = {
-        --[[
-        ["Back"] = {
+    --[[
+        ["back"] = {
             OpenTime = 3,
         }
-        --]]
+    ]]--
     }
 }
