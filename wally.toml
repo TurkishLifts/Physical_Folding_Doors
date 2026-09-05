@@ -6,4 +6,3 @@ realm = "shared"
 
 [dependencies]
 sift = "csqrl/sift@0.0.11"
-freeze = "duckarmor/freeze@0.1.4"

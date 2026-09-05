@@ -1,0 +1,9 @@
+{
+  "name": "Physical_Folding_Doors",
+  "tree": {
+    "$path": "src",
+    "Dependencies": {
+        "$path": "Packages"
+    }
+  }
+}

@@ -1,7 +1,7 @@
 --[[
     Physical_Folding_Doors by TurkishLifts
 
-        VERSION: b1.0,  DATE: 5/09/2026
+        VERSION: v1.0,  DATE: 5/09/2026
 ]]--
 
 --!nocheck
@@ -9,8 +9,14 @@
 
 local module = {}
 
+local APIConnection = nil
+
 function module.init(controller : {})
     local FoldingDoorsContainer = {}
+
+    if APIConnection then
+        APIConnection:Disconnect()
+    end
 
     local API : BindableEvent = controller.API
     local Car : Model = controller.Car
@@ -77,7 +83,7 @@ function module.init(controller : {})
     end
 
     local function CheckTolerance(Hinge: HingeConstraint, TargetCloseAngle : number, Tolerance : number)
-        if not Hinge:IsA("HingeConstraint") then return end
+        if not Hinge:IsA("HingeConstraint") then return false end
 
         if Hinge.CurrentAngle <= TargetCloseAngle + Tolerance and Hinge.CurrentAngle >= TargetCloseAngle - Tolerance then
             return true
@@ -122,7 +128,7 @@ function module.init(controller : {})
         end
     end
 
-    API.Event:Connect(function(protocol, params)
+    APIConnection = API.Event:Connect(function(protocol, params)
         if protocol:sub(1,7) ~= "on_door" then return end
 
         local Side = params.side or "front"

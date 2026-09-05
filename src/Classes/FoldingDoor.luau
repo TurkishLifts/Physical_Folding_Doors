@@ -35,6 +35,8 @@ function FoldingDoor.new(data : {
     local HingeL1 : HingeConstraint = FoldingDoorsMain:FindFirstChild("HingeL1")
     local HingeR1 : HingeConstraint = FoldingDoorsMain:FindFirstChild("HingeR1")
 
+    assert((HingeL1 and HingeR1), "HingeL1 or HingeR1 not found in Main!")
+    
     NewFoldingDoor.HingeL1 = HingeL1
     NewFoldingDoor.HingeR1 = HingeR1
 
