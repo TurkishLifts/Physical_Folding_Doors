@@ -1,11 +1,10 @@
 --[[
     Physical_Folding_Doors by TurkishLifts
 
-        VERSION: v1.0.2,  DATE: 5/09/2026
+        VERSION: v1.0.3,  DATE: 6/09/2026
 ]]--
 
 --!nocheck
-
 
 local module = {}
 
@@ -26,6 +25,29 @@ function module.init(controller : {})
     local sift = require(script.Dependencies.sift)
 
     local Config = require(script.Config)
+
+    local function WeldEm(Model : Model, Weld : boolean)
+        for _,DoorPart in ipairs(Model:GetDescendants()) do
+            if not DoorPart:IsA("BasePart") then continue end
+            if DoorPart.Parent.Name:sub(1,1) ~= "D" then continue end
+            if Weld == true then
+                local w : WeldConstraint = DoorPart:FindFirstChildOfClass("WeldConstraint")
+                if not w then
+                    local nw = Instance.new("WeldConstraint")
+                    nw.Parent = DoorPart
+                    w = nw
+                end
+                w.Part0 = DoorPart
+                w.Part1 = Platform
+                DoorPart.Anchored = false
+            else
+                local w : WeldConstraint = DoorPart:FindFirstChildOfClass("WeldConstraint")
+                if w then
+                    w:Destroy()
+                end
+            end
+        end
+    end
 
     for _,CarComponent in ipairs(Car:GetChildren()) do
         if string.lower(CarComponent.Name:sub(-13)) == "folding_doors" then
@@ -56,32 +78,11 @@ function module.init(controller : {})
                 w.Part1 = Platform
                 DoorPart.Anchored = false
             end
+
+            WeldEm(CarComponent, true)
         end
     end
-
-    local function WeldEm(Model : Model, Weld : boolean)
-        for _,DoorPart in ipairs(Model:GetDescendants()) do
-            if not DoorPart:IsA("BasePart") then continue end
-            if DoorPart.Parent.Name:sub(1,1) ~= "D" then continue end
-            if Weld == true then
-                local w : WeldConstraint = DoorPart:FindFirstChildOfClass("WeldConstraint")
-                if not w then
-                    local nw = Instance.new("WeldConstraint")
-                    nw.Parent = DoorPart
-                    w = nw
-                end
-                w.Part0 = DoorPart
-                w.Part1 = Platform
-                DoorPart.Anchored = false
-            else
-                local w : WeldConstraint = DoorPart:FindFirstChildOfClass("WeldConstraint")
-                if w then
-                    w:Destroy()
-                end
-            end
-        end
-    end
-
+    
     local function CheckTolerance(Hinge: HingeConstraint, TargetCloseAngle : number, Tolerance : number)
         if not Hinge:IsA("HingeConstraint") then return false end
 
@@ -91,6 +92,7 @@ function module.init(controller : {})
 
         return false
     end
+
     local function HandleDoor(FoldingDoor, protocol, params)
         local LocalConfig = FoldingDoor.Config
         local OpenDelay = LocalConfig.OpenDelay or 1
