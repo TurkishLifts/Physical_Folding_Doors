@@ -1,7 +1,7 @@
 --[[
     Physical_Folding_Doors by TurkishLifts
 
-        VERSION: v1.0.3,  DATE: 6/09/2026
+        VERSION: v1.1.0,  DATE: 7/09/2026
 ]]--
 
 --!nocheck

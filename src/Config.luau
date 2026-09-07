@@ -1,13 +1,15 @@
 return {
     CloseAngle = 0,
-    CloseTime = 2,
+    CloseTime = 1,
 
-    OpenAngle = 70,
-    OpenTime = 2,
-    OpenDelay = 1,
+    OpenAngle = 90,
+    OpenTime = 1,
+    OpenDelay = .05,
 
-    CloseTolerance = 5,
+    CloseTolerance = 10,
     ToleranceDelay = 0.5,
+
+    DoorType = "Quadruple", -- Quadruple|Double
 
     CustomSideConfig = {
     --[[
