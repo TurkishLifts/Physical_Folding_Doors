@@ -56,7 +56,7 @@ function FoldingDoor.new(data : {
 end
 
 function FoldingDoor:Close()
-    local OpenAngle = self.Config.OpenAngle or 70
+    local OpenAngle = self.Config.OpenAngle or 90
     local CloseAngle = self.Config.CloseAngle or 0
     local CloseTime = self.Config.CloseTime or 2
     local CloseRPS = CalcRPS(OpenAngle-CloseAngle,CloseTime)
@@ -82,7 +82,7 @@ function FoldingDoor:Close()
 end
 
 function FoldingDoor:Open()
-    local OpenAngle = self.Config.OpenAngle or 70
+    local OpenAngle = self.Config.OpenAngle or 90
     local CloseAngle = self.Config.CloseAngle or 0
     local OpenTime = self.Config.OpenTime or 2
 
@@ -92,7 +92,7 @@ function FoldingDoor:Open()
         self.RTOP.AngularSpeed = OpenRPS
 
         self.LTOP.TargetAngle = OpenAngle
-        self.RTOP.TargetAngle = OpenAngle
+        self.RTOP.TargetAngle = -1*OpenAngle
     else    
         self.LTOP.AngularSpeed = OpenRPS
         self.RTOP.AngularSpeed = OpenRPS

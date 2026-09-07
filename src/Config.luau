@@ -1,9 +1,9 @@
 return {
     CloseAngle = 0,
-    CloseTime = 1,
+    CloseTime = 2,
 
     OpenAngle = 90,
-    OpenTime = 1,
+    OpenTime = 2,
     OpenDelay = .05,
 
     CloseTolerance = 10,
